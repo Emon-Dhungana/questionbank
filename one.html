@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Dropdown Example</title>
+</head>
+<body>
+    <label for="semester">Semester</label>
+    <label for="slct" class="select">
+        <select id="semester" name="semester" required onchange="updateSubject()">
+            <option value="" disabled selected>Select option</option>
+            <option value="one">Semester 1</option>
+            <option value="two">Semester 2</option>
+            <option value="three">Semester 3</option>
+            <option value="four">Semester 4</option>
+            <option value="five">Semester 5</option>
+            <option value="six">Semester 6</option>
+            <option value="seven">Semester 7</option>
+            <option value="eight">Semester 8</option>
+        </select>
+    </label>
+
+    <label for="subject-dropdown">Select a Subject:</label>
+    <select id="subject-dropdown" onchange="updateChapter()">
+        <!-- This dropdown will be dynamically populated based on the selection in the semester dropdown -->
+        <option value="">Select</option>
+    </select>
+
+    <label for="chapter-dropdown">Select a Chapter:</label>
+    <select id="chapter-dropdown">
+        <!-- This dropdown will be dynamically populated based on the selection in the subject dropdown -->
+        <option value="">Select</option>
+    </select>
+
+    <script>
+        function updateSubject() {
+            var semesterDropdown = document.getElementById("semester");
+            var subjectDropdown = document.getElementById("subject-dropdown");
+            var selectedOption = semesterDropdown.value;
+
+            // Clear previous options
+            subjectDropdown.innerHTML = "<option value=''>Select</option>";
+
+            // Populate the subject dropdown based on the selection in the semester dropdown
+            if (selectedOption === "one") {
+                subjectDropdown.innerHTML += "<option value='subject1'>Subject 1</option>";
+                subjectDropdown.innerHTML += "<option value='subject2'>Subject 2</option>";
+
+            } else if (selectedOption === "two") {
+                subjectDropdown.innerHTML += "<option value='subject3'>Subject 3</option>";
+                subjectDropdown.innerHTML += "<option value='subject4'>Subject 4</option>";
+            }
+            // Add more conditions for other semesters
+        }
+
+       
+</body>
+</html>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<?php
+    $mysqli = mysqli_connect("localhost", "root", "", "question");
+    $id = $_GET["updateid"];
+
+    if (isset($_POST["update"])) {
+        $semester = $_POST["semester"];
+        $subject = $_POST["subject"]; // Get the selected subject
+        $chapter = $_POST["chapter"];
+        $difficulty = $_POST["difficulty"];
+        $question = $_POST["question"];
+        $id = $_POST["id"]; // Assuming you have a hidden input field in the form to capture the ID
+
+        // Update the query to include the subject column
+        $query = "UPDATE qdemo SET semester='$semester', subject='$subject', chapter='$chapter', difficulty='$difficulty', question='$question' WHERE id=$id";
+
+        if (mysqli_query($mysqli, $query)) {
+            echo "<br>Your data successfully updated";
+            header('location:qretrieve.php');
+            exit; // Added exit to stop further execution
+        } else {
+            echo "<br>Error while updating your data: " . mysqli_error($mysqli);
+        }
+    }
+
+    // Retrieve question details
+    $query = "SELECT * FROM qdemo WHERE id=$id";
+    $result = mysqli_query($mysqli, $query);
+    $row = mysqli_fetch_assoc($result);
+?>
+
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Question Panel</title> 
+    
+    <link rel="stylesheet" href="questionpanel.css"> 
+    <style>
+       .forcenter{
+        margin-top: 70px;
+       }
+       .forcenter {
+        margin-top: 70px;
+        /* Button styles */
+        .bubble-btn {
+        display: inline-block;
+        font: normal normal 300 1.3em 'Open Sans';
+        text-decoration: none; 
+        color: #ffffff;
+        background-color: transparent;
+        border: 1px solid #ffffff;
+        border-radius: 100px;
+        padding: .3em 1.2em;
+        margin: 5px;
+    }
+/* Hover effect for button */
+    .bubble-btn:hover {
+        animation: bubble 0.4s ease-out;
+        background-color: #00a64d;
+        border-color: #00a64d;
+        cursor: pointer;
+    } 
+    /* Animation keyframes for button */
+    @keyframes bubble {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.2);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+        }
+            
+    </style>
+</head> 
+<body class="main">
+    <div class="forcenter">
+        <form action="" method="post">
+            <fieldset class="box">
+                <label for="question" style=" font-weight: bold;" class="design">Enter Question & Difficulty Level</label><br>
+                <div class="semester">
+                    <label for="semester">Semester</label>
+                    <label for="slct" class="select">
+                    <select id="semester" name="semester" required onchange="updatesubject()">
+                    <option value="" disabled>Select option</option>
+                            <option value="one" <?php if($row["semester"] == "one") echo "selected"; ?>>Semester 1</option>
+                            <option value="two" <?php if($row["semester"] == "two") echo "selected"; ?>>Semester 2</option>
+                            <option value="three" <?php if($row["semester"] == "three") echo "selected"; ?>>Semester 3</option>
+                            <option value="four" <?php if($row["semester"] == "four") echo "selected"; ?>>Semester 4</option>
+                            <option value="five" <?php if($row["semester"] == "five") echo "selected"; ?>>Semester 5</option>
+                            <option value="six" <?php if($row["semester"] == "six") echo "selected"; ?>>Semester 6</option>
+                            <option value="seven" <?php if($row["semester"] == "seven") echo "selected"; ?>>Semester 7</option>
+                            <option value="eight" <?php if($row["semester"] == "eight") echo "selected"; ?>>Semester 8</option>
+                        </select>
+                    </label>
+                    <div class="subject">
+                        <label for="subject">Subject:</label>
+    <label for="slct" class="select"></label>
+    <select id="subject" name="subject" required>
+    <option value="" disabled selected>Select</option>
+    </select>
+</div>
+<script>
+        window.onload = function() {
+            updateSubject();
+        }
+
+        function updateSubject() {
+    var semester = document.getElementById("semester");
+    var subject = document.getElementById("subject");
+    var selectedOption = semester.value;
+    var selectedSubject = subject.value; // Get the currently selected subject
+
+    // Clear the subject dropdown
+    subject.innerHTML = "";
+
+    // Add the default "Select" option
+    var selectOption = document.createElement("option");
+    selectOption.value = "";
+    selectOption.text = "Select";
+    selectOption.disabled = true;
+    selectOption.selected = true;
+    subject.add(selectOption);
+
+    if (selectedOption === "one") {
+        addSubjectOption(subject, "Computer Fundamental");
+        addSubjectOption(subject, "Digital Logic");
+        addSubjectOption(subject, "MathsI");
+        addSubjectOption(subject, "EnglishI");
+        addSubjectOption(subject, "Society and Technology");
+    } else if (selectedOption === "two") {
+        addSubjectOption(subject, "MathsII");
+        addSubjectOption(subject, "Microprocessor");
+        addSubjectOption(subject, "EnglishII");
+        addSubjectOption(subject, "Account");
+        addSubjectOption(subject, "C Programming");
+    } else if (selectedOption === "three") {
+        addSubjectOption(subject, "Web Technology");
+        addSubjectOption(subject, "Java");
+        addSubjectOption(subject, "Statistics");
+        addSubjectOption(subject, "DSAfunction updateSubject() {
+    var semester = document.getElementById("semester");
+    var subject = document.getElementById("subject");
+    var selectedOption = semester.value;
+    var selectedSubject = subject.value; // Get the currently selected subject
+
+    // Clear the subject dropdown
+    subject.innerHTML = "";
+
+    // Add the default "Select" option
+    var selectOption = document.createElement("option");
+    selectOption.value = "";
+    selectOption.text = "Select";
+    selectOption.disabled = true;
+    selectOption.selected = true;
+    subject.add(selectOption);
+
+    if (selectedOption === "one") {
+        addSubjectOption(subject, "Computer Fundamental");
+        addSubjectOption(subject, "Digital Logic");
+        addSubjectOption(subject, "MathsI");
+        addSubjectOption(subject, "EnglishI");
+        addSubjectOption(subject, "Society and Technology");
+    } else if (selectedOption === "two") {
+        addSubjectOption(subject, "MathsII");
+        addSubjectOption(subject, "Microprocessor");
+        addSubjectOption(subject, "EnglishII");
+        addSubjectOption(subject, "Account");
+        addSubjectOption(subject, "C Programming");
+    } else if (selectedOption === "three") {
+        addSubjectOption(subject, "Web Technology");
+        addSubjectOption(subject, "Java");
+        addSubjectOption(subject, "Statistics");
+        addSubjectOption(subject, "DSA");
+        addSubjectOption(subject, "SAD");
+    }
+
+    // Select the previously selected subject option
+    var selectedSubjectOption = subject.querySelector(option[value="${selectedSubject}"]);
+    if (selectedSubjectOption) {
+        selectedSubjectOption.selected = true;
+    }
+}
+
+function addSubjectOption(subject, optionValue) {
+    var option = document.createElement("option");
+    option.value = optionValue;
+    option.text = optionValue;
+    option.selected = (optionValue === "<?php echo $row['subject']; ?>"); // Select the option if it matches the current row's subject
+    subject.add(option);
+}
+        addSubjectOption(subject, "SAD");
+    }
+
+    // Select the previously selected subject option
+    var selectedSubjectOption = subject.querySelector(option[value="${selectedSubject}"]);
+    if (selectedSubjectOption) {
+        selectedSubjectOption.selected = true;
+    }
+}
+
+function addSubjectOption(subject, optionValue) {
+    var option = document.createElement("option");
+    option.value = optionValue;
+    option.text = optionValue;
+    option.selected = (optionValue === "<?php echo $row['subject']; ?>"); // Select the option if it matches the current row's subject
+    subject.add(option);
+}
+    </script>
+
+                </div>
+                <textarea type="text" placeholder="Enter your question" name="question" rows="2" cols="50" required><?php echo $row["question"]; ?></textarea>
+            
+                <div class="chapter">
+                    <label for="chapter">Chapter</label>
+                    <br>
+                    <label for="slct" class="select">
+                        <select id="chapter" name="chapter" required>
+                            <option value="" disabled>Select option</option>
+                            <option value="one" <?php if($row["chapter"] == "one") echo "selected"; ?>>Chapter 1</option>
+                            <option value="two" <?php if($row["chapter"] == "two") echo "selected"; ?>>Chapter 2</option>
+                            <!-- Add options for other chapters -->
+                        </select>
+                    </label>
+                </div>
+                <div class="difficult">
+                    <label for="difficulty">Difficulty</label>
+                    <br>
+                    <label for="difficulty" class="select">
+                        <select id="difficulty" name="difficulty" required>
+                            <option value="" disabled>Select option</option>
+                            <option value="easy" <?php if($row["difficulty"] == "easy") echo "selected"; ?>>Easy</option>
+                            <option value="intermediate" <?php if($row["difficulty"] == "intermediate") echo "selected"; ?>>Intermediate</option>
+                            <!-- Add options for other difficulty levels -->
+                        </select>
+                    </label>
+                </div>
+                <input type="hidden" name="id" value="<?php echo $id; ?>">
+                <div class="wrap"> 
+                   <button class="bubble-btn" name="update" type="submit">Update</button>
+                </div> 
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>

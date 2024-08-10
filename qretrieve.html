@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Question Retrieve</title>
+        <link rel="icon" href="questionmark.PNG">
+        <link rel="stylesheet" href="qretrieve.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <style>
+            body {
+                background-image:linear-gradient(150deg, #9ccbff 10%,#FFFFFF 90%);
+              }
+              .dark-mode {
+                background-image: linear-gradient(150deg,#586e8e 10%,#3f6473 90%);            
+                color: white;
+              }
+              iframe{
+                margin-top: 170px;
+                /* border:none; */
+                margin-left: 340px;
+                background-color: #ffffff;
+                border-radius: 10px;
+              }
+              .date-picker {
+                position: fixed;
+                top: 30%;
+                right: -130px;
+                transform: translate(-50%, -50%);
+                z-index: 9999;
+                display: none;
+                padding: 20px;
+                background-color: transparent; /* Change background color to transparent */
+              }
+        </style>
+    </head>
+    <body class="main">
+        <div>
+			<a href="index.html"><img src="logo.png" class="logo"></a> 
+        </div>
+        <form action="qretrieve.php" method="get" target="frame">
+        <div class="fetch">Fetch Your Questions Here</div>
+      
+            </div>
+          
+        <div class="question">
+            <div class="semester">
+              <label for="semester">Semester</label>
+              <label for="slct" class="select">
+                  <select id="semester" name="semester" required onchange="updatesubject()">
+                      <option value="" disabled selected>Select option</option>  
+                      <option value="all">All</option>                          
+                      <option value="one">Semester 1</option>
+                      <option value="two">Semester 2</option>
+                      <option value="three">Semester 3</option>
+                      <option value="four">Semester 4</option>
+                      <option value="five">Semester 5</option>  
+                      <option value="six">Semester 6</option>
+                      <option value="seven">Semester 7</option>
+                      <option value="eight">Semester 8</option>
+                  </select>
+            <div class="subject">
+               <label for="subject">Subject:</label>
+                <label for="slct" class="select"></label>
+                  <select id="subject" name="subject" required>
+                        <option value="" disabled selected>Select</option>
+                  </select>
+            </div>
+
+<script>
+  function updatesubject() {
+      var semester = document.getElementById("semester");
+      var subject = document.getElementById("subject");
+      var selectedOption = semester.value;
+      
+      subject.innerHTML = "<option value=''>Select</option>";
+
+      if (selectedOption === "one") {
+        subject.innerHTML += "<option value='all'>All</option>";
+          subject.innerHTML += "<option value='Computer Fundatmental'>Computer Fundamental</option>";
+          subject.innerHTML += "<option value='Digital Logic'>Digital Logic</option>";
+          subject.innerHTML += "<option value='MathsI'>MathsI</option>";
+          subject.innerHTML += "<option value='EnglishI'>EnglishI</option>";
+          subject.innerHTML += "<option value='Society and Technology'>Society and Technology</option>";
+      } 
+      else if (selectedOption === "two") {
+        subject.innerHTML += "<option value='all'>All</option>";
+          subject.innerHTML += "<option value='MathsII'>MathsII</option>";
+          subject.innerHTML += "<option value='Microprocessor'>Microprocessor</option>";
+          subject.innerHTML += "<option value='EnglishII'>EnglishII</option>";
+          subject.innerHTML += "<option value='Account'>Account</option>";
+          subject.innerHTML += "<option value='C Programming'>C Programming</option>";
+          
+      } 
+      else if (selectedOption === "three") {
+        subject.innerHTML += "<option value='all'>All</option>";
+          subject.innerHTML += "<option value='Web Technology'>Web Technology</option>";
+          subject.innerHTML += "<option value='Java'>Java</option>";
+          subject.innerHTML += "<option value='Statistics'>Statistics</option>";
+          subject.innerHTML += "<option value='DSA'>DSA</option>";
+          subject.innerHTML += "<option value='SAD'>SAD</option>";
+      }
+      else if(selectedOption == "all"){
+        subject.innerHTML += "<option value='all'>All</option>";
+      }
+  }
+</script>
+            </div>
+            <div class="chapter">
+                <label for="chapter" >Chapter</label>
+                <br>
+                <label for="slct" class="select">
+                    <select id="slct" name="chapter" required>
+                      <option value="" disabled selected>Select option</option>
+                      <option value="all">All</option>    
+                      <option value="one">Chapter 1</option>
+                      <option value="two">Chapter 2</option>
+                      <option value="three">Chapter 3</option>
+                      <option value="four">Chapter 4</option>
+                    </select>
+                  </label>
+                </div>
+                
+            <div class="difficult">
+            <label for="difficulty">Difficulty</label>
+            <br>
+            <label for="slct" class="select">
+                <select id="slct" name="difficulty" required>
+                  <option value="" disabled selected>Select option</option>  
+                  <option value="all">All</option>                        
+                  <option value="easy">Easy</option>
+                  <option value="intermediate">Intermediate</option>
+                  <option value="difficult">Difficult</option>
+                  <option value="expert">Expert</option>
+                </select>
+            </div>
+            <div class="filter"> 
+                 <a href="display.html">  <button class="bubble-btn"onclick="">Filter</button></a> 
+            </div> 
+            </form>
+        </div>
+
+        
+        <iframe src="display.html" height="300" width="750" name="frame" class="frame"></iframe>
+   
+         <div class="sidebar1">
+            <a href="index.html"  title="Home"><i class="fa fa-fw fa-home" ></i> </a>
+            <a href="questionpanel.html"  title="Question Panel"><i class="fa fa-fw fa-arrows-h"></i> </a>
+            <a href="#" title="Date" id="date-icon"><i class="fa fa-fw fa-calendar"></i></a>            
+            <a href="#dark"  title="Dark"><i class="fa fa-fw fa-toggle-on" onclick="myFunction()"></i></a>
+            <a href="help.html" title="help"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+            <a href="login.html" title="Log out"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+            
+        </div>
+        <div class="date-picker">
+          <div id="calendar" ></div>
+      </div>
+  
+      <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+      <script>
+          function myFunction() {
+              var element = document.body;
+              element.classList.toggle("dark-mode");
+          }
+          const dateIcon = document.getElementById('date-icon');
+        const datePicker = document.querySelector('.date-picker');
+        const calendarContainer = document.getElementById('calendar');
+    
+        dateIcon.addEventListener('click', () => {
+            datePicker.style.display = 'block';
+            const calendar = flatpickr(calendarContainer, {
+                inline: true,
+                defaultDate: 'today',
+                disableMobile: true,
+                theme: 'light',
+            });
+        });
+    
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('.date-picker') && !event.target.closest('#date-icon')) {
+                datePicker.style.display = 'none';
+            }
+        });
+            </script>
+            <script>
+              document.addEventListener("DOMContentLoaded", function() {
+                  const urlParams = new URLSearchParams(window.location.search);
+                  const username = urlParams.get('username');
+            
+                  if (username) {
+                      const welcomeMessage = document.createElement('div');
+                      welcomeMessage.innerText = `Welcome, ${username}!`;
+                      document.body.insertBefore(welcomeMessage, document.querySelector('form'));
+                  }
+              });
+            </script>
+            
+    </body>
+</html>

@@ -1,0 +1,173 @@
+/* Styling for the entire body */
+body { 
+	display: flex; /* Flex display for centering content */
+	align-items: center; /* Centering vertically */
+	justify-content: center; /* Centering horizontally */
+	font-family: Arial,sans-serif;
+	line-height: 1.5; 
+	min-height: 100vh; 
+	background: #f3f3f3; 
+	flex-direction: column; 
+	margin: 0;
+} 
+/* Styling for main container */
+.main {
+	background-image: linear-gradient(150deg, #9ccbff 10%,#FFFFFF 90%);
+	overflow: hidden; /* Hide overflowing content */
+} 
+/* Styling for navigation bar */
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	padding: 20px;
+	background-color: #f8f8f8;
+	margin-bottom: 700px; 
+	width: 98%;
+	height: 20px;
+	margin-top: -10px;
+}
+.navbar a {
+	margin-right: 15px;
+	text-decoration: none;
+	color: #3891f6;
+}
+.navbar .fbutton {
+	padding: 0px 20px;
+	margin-left: 10px;
+	margin-top: -5px;
+}
+/* Styling for buttons */
+.navbar .bubble-btn {
+    display: inline-block;
+    font: normal normal 300 1.3em 'Open Sans';
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #3891f6;
+    border: 1px solid #ffffff;
+    border-radius: 100px;
+    margin-top: 100px;
+    padding: 3px 10px;
+    margin: 5px;
+}
+.bubble-btn:hover {
+    animation: bubble 0.4s ease-out;
+    cursor: pointer;
+}
+/* Animation keyframes */
+@keyframes bubble {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+}
+/* Styling for banner section */
+.banner {
+	position: fixed;
+	padding: 50px;
+	padding-top: 0px;
+	padding-bottom: 15px;
+	text-align: center;
+	background-color: #cee6ff;
+	border-radius: 20px;
+	margin-top: -300px;
+}
+.banner h1{
+	color: #3891f6;
+}
+.banner p{
+	font-family: cursive;
+	color:#5678a0 ;
+	font-size: x-large;
+}
+.banner .bubble-btn{
+    display:inline-block;
+    font:normal normal 300 1.3em 'Open Sans';
+    text-decoration:none; 
+    color:#ffffff;
+    background-color:#230DC9;
+    border:1px solid #ffffff;
+    border-radius:100px;
+    padding: .3em 1.2em;
+    margin:5px;
+}
+.bubble-btn:hover {
+    animation: bubble 0.4s ease-out;
+    cursor: pointer;
+}
+/* Animation keyframes */
+@keyframes bubble {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+}
+/* Styling for left side section */
+.leftside{
+	display: flex;
+	justify-content: left;
+	position:absolute;
+	padding: 50px;
+	text-align:left;
+	height:210px ;
+	width:260px;
+	background-color: #5e94ae;
+	margin-left: -1000px;
+	margin-top: 250px;
+	border-radius: 20px;
+}
+.leftside p{
+	position: relative;
+	color: #FFFFFF;
+	font-size: larger;
+	line-height: 40px;
+	margin-top: -40px;
+}
+/* Styling for right side section */
+.rightside img {
+	height: 600px;
+	width: 600px;
+	border-radius: 50%;
+	display: inline-block;
+}
+.rightside{
+	position:absolute;
+	padding: 50px;
+	text-align: center;
+	margin-left: 1000px;
+	margin-top: 250px;
+}
+@media (max-width: 768px) {
+    .main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .leftside,
+    .rightside {
+        position: static;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .leftside {
+        width: 100%;
+        text-align: center;
+        height: auto;
+    }
+
+    .rightside img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 0;
+    }
+}

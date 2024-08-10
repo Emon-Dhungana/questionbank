@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="questionmark.PNG">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup</title>
+  <link rel="stylesheet" href="signup.css">
+  <script>
+    window.onload = function() {
+      var passwordField = document.getElementById("upassword");
+      var confirmPasswordField = document.getElementById("cpassword");
+      var errorSpan = document.getElementById("password-error");
+      var signupButton = document.getElementById("signup-button");
+
+      confirmPasswordField.addEventListener("input", function() {
+        var password = passwordField.value;
+        var confirmPassword = confirmPasswordField.value;
+
+        if (password !== confirmPassword) {
+          errorSpan.innerHTML = "Passwords do not match";
+          signupButton.disabled = true;
+        } else {
+          errorSpan.innerHTML = "";
+          validatePasswordFormat(password);
+        }
+      });
+
+      passwordField.addEventListener("input", function() {
+        validatePasswordFormat(passwordField.value);
+      });
+
+      function validatePasswordFormat(password) {
+        var formatRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+
+        if (formatRegex.test(password)) {
+          errorSpan.innerHTML = "";
+          signupButton.disabled = false;
+        } else {
+          errorSpan.innerHTML = "Password must be at least six characters long, including at least one uppercase letter, one lowercase letter, one number, and one special character";
+          signupButton.disabled = true;
+        }
+      }
+    };
+  </script>
+</head>
+<body class="main">
+  <a href="index.html"><img src="logo.png" style="height: 30px; width:90px"></a>
+
+  <h2 style="color: white;">Already have an account?<a href="login.html" style="text-decoration: none;"> Login</a></h2>
+
+  <div class="form">
+    <h1>Signup</h1>
+    <form action="signup.php" method="post">
+      <label for="fullname">Full Name:</label>
+      <input type="text" id="fullname" name="fullname" placeholder="Enter your Fullname" required>
+
+      <label for="uname">Username:</label>
+      <input type="text" id="uname" name="uname" placeholder="Create your Username" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+      <label for="password">Password: </label>
+      <input type="password" id="upassword" name="upassword" placeholder="Create your Password" required>
+
+      <label for="cpassword">Confirm Password: </label>
+      <input type="password" id="cpassword" name="cpassword" placeholder="Re-enter your Password" required>
+      <span id="password-error" style="color: red;"></span> <div class="wrap">
+        <button id="signup-button" type="submit" disabled>Signup</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

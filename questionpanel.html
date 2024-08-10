@@ -1,0 +1,284 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Question Panel</title> 
+    <link rel="icon" href="questionmark.PNG">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="questionpanel.css"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <style>
+        body {
+            background-image:linear-gradient(150deg, #9ccbff 10%,#FFFFFF 90%);
+          }
+          .dark-mode {
+            background-image: linear-gradient(150deg, #414d5c 10%,#211d1d 90%);
+            color: white;
+          }
+        .dark-mode p{
+        color: white;
+        }
+        .date-picker {
+                position: fixed;
+                top: 30%;
+                right: -130px;
+                transform: translate(-50%, -50%);
+                z-index: 9999;
+                display: none;
+                padding: 20px;
+                background-color: transparent; /* Change background color to transparent */
+              }
+    </style>
+</head> 
+<body class="main">
+    <div class="profile">
+        <a href="index.html"><img src="logo.png" style="height: 30px; width:90px"></a> 
+    </div>
+    <!-- <div class="username">Username</div> -->
+    <div class="sidebar1">
+        <ul style="list-style: none; padding-left: 0px;">
+        <li><a href="index.html" title="Home"><i class="fa fa-fw fa-home"></i></a></li>  
+        <li><a href="qretrieve.html" title="Question Retrieve"><i class="fa fa-fw fa-arrows-h"></i> </a></li>
+        <li><a href="#" title="Date" id="date-icon"><i class="fa fa-fw fa-calendar"></i></a></li>       
+        <li><a href="#dark" title="Dark Mode">  <i class="fa fa-fw fa-toggle-on" onclick="myFunction()"></i></a></li>
+        <li><a href="help.html" title="help"><i class="fa fa-info-circle" ></i></a></li>
+        <li><a href="login.html" title="Log out"><i class="fa fa-sign-out" ></i></a></li>
+        </ul>
+    </div>
+    <div class="forcenter">
+        <form id="questionForm" action="questionpanel.php" method="post">
+            <fieldset class="box" >
+                <label for="question" style=" font-weight: bold;" class="design">Enter Question & Difficulty Level</label><br>
+                <div class="semester">
+                    <label for="semester">Semester</label>
+                    <label for="slct" class="select">
+                        <select id="semester" name="semester" required onchange="updatesubject()">
+                            <option value="" disabled selected>Select option</option> 
+                                            
+                            <option value="one">Semester 1</option>
+                            <option value="two">Semester 2</option>
+                            <option value="three">Semester 3</option>
+                            <option value="four">Semester 4</option>
+                            <option value="five">Semester 5</option>  
+                            <option value="six">Semester 6</option>
+                            <option value="seven">Semester 7</option>
+                            <option value="eight">Semester 8</option>
+                        </select>
+                        </label>
+                        <div class="subject">
+                        <label for="subject">Subject:</label>
+    <label for="slct" class="select"></label>
+    <select id="subject" name="subject" required>
+    <option value="" disabled selected>Select</option>
+    </select>
+</div>
+    <script>
+        function updatesubject() {
+            var semester = document.getElementById("semester");
+            var subject = document.getElementById("subject");
+            var selectedOption = semester.value;
+            
+            subject.innerHTML = "<option value=''>Select</option>";
+
+            if (selectedOption === "one") {
+                subject.innerHTML += "<option value='Computer Fundamental'>Computer Fundatmental</option>";
+                subject.innerHTML += "<option value='Digital Logic'>Digital Logic</option>";
+                subject.innerHTML += "<option value='MathsI'>MathsI</option>";
+                subject.innerHTML += "<option value='EnglishI'>EnglishI</option>";
+                subject.innerHTML += "<option value='Society and Technology'>Society and Technology</option>";
+            } else if (selectedOption === "two") {
+                subject.innerHTML += "<option value='MathsII'>MathsII</option>";
+                subject.innerHTML += "<option value='Microprocessor'>Microprocessor</option>";
+                subject.innerHTML += "<option value='EnglishII'>EnglishII</option>";
+                subject.innerHTML += "<option value='Account'>Account</option>";
+                subject.innerHTML += "<option value='C Programming'>C Programming</option>";
+                
+            } else if (selectedOption === "three") {
+                subject.innerHTML += "<option value='Web Technology'>Web Technology</option>";
+                subject.innerHTML += "<option value='Java'>Java</option>";
+                subject.innerHTML += "<option value='Statistics'>Statistics</option>";
+                subject.innerHTML += "<option value='DSA'>DSA</option>";
+                subject.innerHTML += "<option value='SAD'>SAD</option>";
+            }
+        }
+    </script>
+                </div>
+                <textarea type="text"  placeholder="Enter your question" name="question" rows="2" cols="50" required></textarea>
+                <div class="chapter">
+                    <label for="chapter" >Chapter</label>
+                    <br>
+                    <label for="slct" class="select">
+                        <select id="chapter" name="chapter" required>
+                            <option value="" disabled selected>Select option</option>
+                            <option value="one">Chapter 1</option>
+                            <option value="two">Chapter 2</option>
+                            <option value="three">Chapter 3</option>
+                            <option value="four">Chapter 4</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="difficult">
+                    <label for="difficulty">Difficulty</label>
+                    <br>
+                    <label for="difficulty" class="select">
+                        <select id="difficulty" name="difficulty" required>
+                            <option value="" disabled selected>Select option</option>                      
+                            <option value="easy">Easy</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="difficult">Difficult</option>
+                            <option value="expert">Expert</option>
+                        </select>
+                        
+                    </div>
+                <div class="wrap"> 
+                    <button class="bubble-btn" type="button" onclick="submitForm()">Add</button>
+                </div> 
+            </fieldset>
+        </form>
+        <div class="picture">
+            <img src="dashbook.png">
+        </div>
+    </div>
+    <div class="date-picker">
+        <div id="calendar" style="height: 100px; width: 100px;"></div>
+    </div>
+    </div>
+    <script>
+
+        function submitForm() {
+            var formData = new FormData(document.getElementById("questionForm"));
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        if (xhr.responseText === 'Question Added') {
+                            showMessageSuccess(xhr.responseText);
+                        } else {
+                            showMessageError(xhr.responseText);
+                        }
+                    } else {
+                        showMessageError("Error");
+                    }
+                }
+            };
+            xhr.open("POST", "questionpanel.php", true);
+            xhr.send(formData);
+        }
+
+        function showMessageSuccess(message) {
+            var messageDiv = document.createElement("div");
+            messageDiv.textContent = message;
+            messageDiv.style.backgroundColor = "green";
+            messageDiv.style.color = "white";
+            messageDiv.style.padding = "10px";
+            messageDiv.style.position = "fixed";
+            messageDiv.style.bottom = "400px";
+            messageDiv.style.left = "50%";
+            messageDiv.style.transform = "translateX(-50%)";
+            messageDiv.style.borderRadius = "5px";
+            messageDiv.style.display = "inline-block";
+            document.body.appendChild(messageDiv);
+
+            // Hide the message after 3 seconds
+            setTimeout(function(){
+                messageDiv.style.display = "none";
+            }, 3000);
+        }
+
+        function showMessageError(message) {
+            var messageDiv = document.createElement("div");
+            messageDiv.textContent = message;
+            messageDiv.style.backgroundColor = "red";
+            messageDiv.style.color = "white";
+            messageDiv.style.padding = "10px";
+            messageDiv.style.position = "fixed";
+            messageDiv.style.bottom = "400px";
+            messageDiv.style.left = "50%";
+            messageDiv.style.transform = "translateX(-50%)";
+            messageDiv.style.borderRadius = "5px";
+            messageDiv.style.display = "inline-block";
+            document.body.appendChild(messageDiv);
+
+            // Hide the message after 3 seconds
+            setTimeout(function(){
+                messageDiv.style.display = "none";
+            }, 3000);
+        }
+        
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        function myFunction() {
+            var element = document.body;
+            element.classList.toggle("dark-mode");
+        }
+    
+        const dateIcon = document.getElementById('date-icon');
+        const datePicker = document.querySelector('.date-picker');
+        const calendarContainer = document.getElementById('calendar');
+    
+        dateIcon.addEventListener('click', () => {
+            datePicker.style.display = 'block';
+            const calendar = flatpickr(calendarContainer, {
+                inline: true,
+                defaultDate: 'today',
+                disableMobile: true,
+                theme: 'light',
+            });
+        });
+    
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('.date-picker') && !event.target.closest('#date-icon')) {
+                datePicker.style.display = 'none';
+            }
+        });
+          </script>
+     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const username = urlParams.get('username');
+      
+            if (username) {
+                const welcomeMessage = document.createElement('div');
+                welcomeMessage.innerText = `Welcome, ${username}!`;
+                document.body.insertBefore(welcomeMessage, document.querySelector('form'));
+            }
+        });
+      </script>
+      <script>
+        function updatesubject() {
+            var semester = document.getElementById("semester");
+            var subject = document.getElementById("subject");
+            var selectedOption = semester.value;
+    
+            // Set the previously selected semester option
+            var selectedSemesterOption = document.querySelector('#semester option[value="' + selectedOption + '"]');
+            if (selectedSemesterOption) {
+                selectedSemesterOption.selected = true;
+            }
+    
+            subject.innerHTML = "<option value=''>Select</option>";
+    
+            if (selectedOption === "one") {
+                subject.innerHTML += "<option value='Computer Fundatmental'>Computer Fundatmental</option>";
+                subject.innerHTML += "<option value='Digital Logic'>Digital Logic</option>";
+                subject.innerHTML += "<option value='MathsI'>MathsI</option>";
+                subject.innerHTML += "<option value='EnglishI'>EnglishI</option>";
+                subject.innerHTML += "<option value='Society and Technology'>Society and Technology</option>";
+            } else if (selectedOption === "two") {
+                subject.innerHTML += "<option value='MathsII'>MathsII</option>";
+                subject.innerHTML += "<option value='Microprocessor'>Microprocessor</option>";
+                subject.innerHTML += "<option value='EnglishII'>EnglishII</option>";
+                subject.innerHTML += "<option value='Account'>Account</option>";
+                subject.innerHTML += "<option value='C Programming'>C Programming</option>";
+            } else if (selectedOption === "three") {
+                subject.innerHTML += "<option value='Web Technology'>Web Technology</option>";
+                subject.innerHTML += "<option value='Java'>Java</option>";
+                subject.innerHTML += "<option value='Statistics'>Statistics</option>";
+                subject.innerHTML += "<option value='DSA'>DSA</option>";
+                subject.innerHTML += "<option value='SAD'>SAD</option>";
+            }
+        }
+    </script>
+</body>
+</html>

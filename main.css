@@ -1,0 +1,24 @@
+/* Body styles */
+body { 
+    display: block; 
+    align-items: center; 
+    justify-content: center; 
+    font-family: sans-serif; 
+    line-height: 1.5; 
+    min-height: 100vh; 
+    background: #f3f3f3; 
+    flex-direction: column; 
+    margin: 0px; 
+    padding-left: 10px;
+} 
+/* Main section styles */
+.main {
+    background-image: linear-gradient(150deg, #9ccbff 10%, #FFFFFF 90%);
+    overflow: hidden;  
+}
+/* Profile section styles */
+.profile {
+    margin-bottom: 50px;
+    text-align: left;
+    margin-top: 15px;
+}

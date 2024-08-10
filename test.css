@@ -1,0 +1,200 @@
+/* Importing external CSS file for icon styles */
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/copy.css');
+
+/* Body styles */
+body { 
+    display: block; 
+    align-items: center; 
+    justify-content: center; 
+    font-family: sans-serif; 
+    line-height: 1.5; 
+    min-height: 100vh; 
+    background: #f3f3f3; 
+    flex-direction: column; 
+    margin: 0px; 
+    padding-left: 10px;
+} 
+
+/* Main section styles */
+.main {
+    background-image: linear-gradient(150deg, #9ccbff 10%, #FFFFFF 90%);
+    overflow: hidden;  
+}
+
+/* Profile section styles */
+.profile {
+    margin-bottom: 50px;
+    text-align: left;
+    margin-top: 15px;
+}
+
+/* Textarea styles */
+textarea {
+    resize: none;
+    font-size: larger;
+}
+
+/* Label styles */
+label {
+    font-family: Calibri, 'Trebuchet MS';
+    font-size: 20px;
+}
+
+/* Design label styles */
+.design {
+    font-size: 20px;
+}
+
+/* Box styles */
+.box {
+    width: 240px;
+    border: none;
+    background-image: linear-gradient(250deg, #9ccbff 10%, #83c9ff 90%);
+    align-items: center;
+    justify-content: center; 
+    text-align: center;
+    position: relative;
+    margin-top: 60px;
+    padding: 5px 20px;
+    text-align: center;
+}
+
+/* Chapter section styles */
+.chapter {
+    text-align: left;
+    display: inline-block;
+    padding-right: 80px;
+    vertical-align: middle;
+}
+
+/* Difficulty section styles */
+.difficult {
+    text-align: right;
+    display: inline-block;
+    padding-left: 25px;
+    vertical-align: middle;
+}
+
+/* Button styles */
+.bubble-btn {
+    display: inline-block;
+    font: normal normal 300 1.3em 'Open Sans';
+    text-decoration: none; 
+    color: #ffffff;
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    border-radius: 100px;
+    padding: .3em 1.2em;
+    margin: 5px;
+}
+
+/* Hover effect for button */
+.bubble-btn:hover {
+    animation: bubble 0.4s ease-out;
+    background-color: #00a64d;
+    border-color: #00a64d;
+    cursor: pointer;
+} 
+
+/* Animation keyframes for button */
+@keyframes bubble {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Centering the content */
+.forcenter {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;  
+}
+
+/* Picture section styles */
+.picture {
+    float: left;
+    margin-top: 20px;
+    margin-left: -400px;
+    height: 30px;
+    width: 30px;
+}
+
+/* Logout section styles */
+.logout {
+    float: right;
+    margin-top: 480px;
+    margin-right: -25px;
+}
+
+/* Logout button styles */
+.logout-button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer; 
+}
+
+/* Logout button image styles */
+.logout-button img {
+    width: 40px;
+    height: 40px;
+}
+
+/* Image overlay styles */
+.image-overlay {
+    position: fixed;
+    color: red;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Show image overlay on button hover */
+.logout-button:hover .image-overlay {
+    display: block;
+}
+
+/* Image text styles */
+.image-text {
+    font-size: 15px;
+    margin-top: -60px;
+}
+
+/* Alert section styles */
+.alert {
+    text-align: center;
+}
+
+/* Sidebar section styles */
+.sidebar1 {
+    height: 340px;
+    width: 50px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 1260px;
+    background-color: #9ccbff;
+    overflow-x: hidden;
+    padding-top: 50px;
+    margin-top: 132px;
+}
+
+/* Sidebar link styles */
+.sidebar1 a {
+    padding: 40px 8px 6px 12px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #ffffff;
+    display: flex;
+}

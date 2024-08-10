@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body class="main">
+    <a href="index.html"><img src="logo.png" style="height: 30px; width: 90px"></a>
+    <div>
+        <h1 class="slogan">Unlocking Knowledge,<br>Empowering Education</br></h1>
+    </div>
+
+    <div class="form">
+        <h1 style="text-align: center;">Login</h1>
+        <form id="loginForm" onsubmit="submitForm(); return false;"> <!-- Prevent the default form submission -->
+            <label for="first">Username:</label>
+            <input type="text" id="first" name="first" placeholder="Enter your Username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your Password" required>
+
+            <div class="wrap">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+        <p>Not registered? <a href="signup.html" style="text-decoration: none;">Create an account</a></p>
+    </div>
+
+    <script>
+        function submitForm() {
+            var formData = new FormData(document.getElementById("loginForm"));
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        if (xhr.responseText === 'Login successful.') {
+                            const username = formData.get('first');
+                            showMessageSuccess(xhr.responseText, username);
+                            setTimeout(function() {
+                                window.location.href = `qretrieve.html?username=${username}`;
+                            }, 2000);
+                        } else {
+                            showMessageError(xhr.responseText);
+                        }
+                    } else {
+                        showMessageError("Error");
+                    }
+                }
+            };
+            xhr.open("POST", "login.php", true);
+            xhr.send(formData);
+        }
+
+        function showMessageSuccess(message, username) {
+            var messageDiv = document.createElement("div");
+            messageDiv.textContent = `${message} Welcome, ${username}!`;
+            messageDiv.style.backgroundColor = "green";
+            messageDiv.style.color = "white";
+            messageDiv.style.padding = "10px";
+            messageDiv.style.position = "fixed";
+            messageDiv.style.bottom = "20px";
+            messageDiv.style.left = "50%";
+            messageDiv.style.transform = "translateX(-50%)";
+            messageDiv.style.borderRadius = "5px";
+            messageDiv.style.display = "inline-block";
+            document.body.appendChild(messageDiv);
+
+            setTimeout(function() {
+                messageDiv.style.display = "none";
+            }, 3000);
+        }
+
+        function showMessageError(message) {
+            var messageDiv = document.createElement("div");
+            messageDiv.textContent = message;
+            messageDiv.style.backgroundColor = "red";
+            messageDiv.style.color = "white";
+            messageDiv.style.padding = "10px";
+            messageDiv.style.position = "fixed";
+            messageDiv.style.bottom = "20px";
+            messageDiv.style.left = "50%";
+            messageDiv.style.transform = "translateX(-50%)";
+            messageDiv.style.borderRadius = "5px";
+            messageDiv.style.display = "inline-block";
+            document.body.appendChild(messageDiv);
+
+            setTimeout(function() {
+                messageDiv.style.display = "none";
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
+
